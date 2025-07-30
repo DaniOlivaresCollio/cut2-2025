@@ -1,6 +1,2 @@
-"0","# Guardar base survey"
-"0","data_svy <- as_survey_design(data, weights = rake_wb2)"
-"0",""
-"0","# Guardar archivos"
 "0","save(data,file=""output/data/datos-cut.Rdata"")"
 "0","saveRDS(data,file=""output/data/datos-cut.rds"")"
