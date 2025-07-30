@@ -3,7 +3,7 @@
     "path": "C:/Users/danie/Documents/fondecyt/cut2-2025/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "3054979914",
+    "hash": "2008556447",
     "contents": "",
     "dirty": false,
     "created": 1753787944276.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "11,31",
+        "cursorPosition": "6,55",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1753911856,
+    "lastKnownWriteTime": 1753912262,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1753911856425,
+    "last_content_update": 1753912262496,
     "read_only": false,
     "read_only_alternatives": []
 }

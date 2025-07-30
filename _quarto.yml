@@ -4,7 +4,7 @@ project:
 
 book:
   title: "cut2-2025"
-  author: "Daniela Olivares"
+  author: "Pablo Pérez-Ahumada, Daniela Olivares-Collío"
   date: today
   chapters:
     - index.qmd
