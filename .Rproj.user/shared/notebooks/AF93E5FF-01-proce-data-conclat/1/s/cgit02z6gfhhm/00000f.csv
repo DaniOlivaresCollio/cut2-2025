@@ -1,0 +1,52 @@
+"0","# Acuerdo: redistribuir riquezas"
+"0","frq(data$c07_05)"
+"1","[31mNivel de acuerdo: redistribuir riquezas (c07_05) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2998 mean=4.04 sd=0.88[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |   25 |  0.82 |    0.83 |   0.83
+    2 |  125 |  4.10 |    4.17 |   5.00
+    3 |  590 | 19.36 |   19.68 |  24.68
+    4 | 1228 | 40.29 |   40.96 |  65.64
+    5 | 1030 | 33.79 |   34.36 | 100.00
+ <NA> |   50 |  1.64 |    <NA> |   <NA>
+"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_05 = ifelse(c07_05 %in% c(-999, -888), NA, c07_05)"
+"0","  ) %>%"
+"0","  set_variable_labels(c07_05 = ""Nivel de acuerdo: redistribuir riquezas (c07_05)"")"
+"0",""
+"0","frq(data$c07_05)"
+"1","[31mNivel de acuerdo: redistribuir riquezas (c07_05) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2998 mean=4.04 sd=0.88[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |   25 |  0.82 |    0.83 |   0.83
+    2 |  125 |  4.10 |    4.17 |   5.00
+    3 |  590 | 19.36 |   19.68 |  24.68
+    4 | 1228 | 40.29 |   40.96 |  65.64
+    5 | 1030 | 33.79 |   34.36 | 100.00
+ <NA> |   50 |  1.64 |    <NA> |   <NA>
+"
+"0","# Crear variable dicotómica: acuerdo (4 o 5)"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_05_acuerdo = ifelse("
+"0","      c07_05 %in% c(4, 5), 1,"
+"0","      ifelse(c07_05 %in% c(1, 2, 3), 0, NA))"
+"0","  )%>%"
+"0","  set_variable_labels(c07_05_acuerdo = ""De acuerdo o Muy de acuerdo: redistribuir riquezas"")"
+"0",""
+"0","frq(data$c07_05_acuerdo)"
+"1","[31mDe acuerdo o Muy de acuerdo: redistribuir riquezas (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2998 mean=0.75 sd=0.43[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 |  740 | 24.28 |   24.68 |  24.68
+    1 | 2258 | 74.08 |   75.32 | 100.00
+ <NA> |   50 |  1.64 |    <NA> |   <NA>
+"

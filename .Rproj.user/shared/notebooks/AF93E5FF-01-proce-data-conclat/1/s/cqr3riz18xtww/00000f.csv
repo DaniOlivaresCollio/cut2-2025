@@ -1,0 +1,52 @@
+"0","# Acuerdo: sindicatos tengan más poder"
+"0","frq(data$c07_04)"
+"1","[31mNivel de acuerdo: sindicatos tengan más poder (c07_04) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2965 mean=3.47 sd=1.05[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  120 |  3.94 |    4.05 |   4.05
+    2 |  424 | 13.91 |   14.30 |  18.35
+    3 |  834 | 27.36 |   28.13 |  46.48
+    4 | 1109 | 36.38 |   37.40 |  83.88
+    5 |  478 | 15.68 |   16.12 | 100.00
+ <NA> |   83 |  2.72 |    <NA> |   <NA>
+"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_04 = ifelse(c07_04 %in% c(-999, -888), NA, c07_04)"
+"0","  ) %>%"
+"0","  set_variable_labels(c07_04 = ""Nivel de acuerdo: sindicatos tengan más poder (c07_04)"")"
+"0",""
+"0","frq(data$c07_04)"
+"1","[31mNivel de acuerdo: sindicatos tengan más poder (c07_04) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2965 mean=3.47 sd=1.05[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  120 |  3.94 |    4.05 |   4.05
+    2 |  424 | 13.91 |   14.30 |  18.35
+    3 |  834 | 27.36 |   28.13 |  46.48
+    4 | 1109 | 36.38 |   37.40 |  83.88
+    5 |  478 | 15.68 |   16.12 | 100.00
+ <NA> |   83 |  2.72 |    <NA> |   <NA>
+"
+"0","# Crear variable dicotómica: acuerdo (4 o 5)"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_04_acuerdo = ifelse("
+"0","      c07_04 %in% c(4, 5), 1,"
+"0","      ifelse(c07_04 %in% c(1, 2, 3), 0, NA))"
+"0","  )%>%"
+"0","  set_variable_labels(c07_04_acuerdo = ""De acuerdo o Muy de acuerdo: sindicatos tengan más poder"")"
+"0",""
+"0","frq(data$c07_04_acuerdo)"
+"1","[31mDe acuerdo o Muy de acuerdo: sindicatos tengan más poder (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2965 mean=0.54 sd=0.50[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 1378 | 45.21 |   46.48 |  46.48
+    1 | 1587 | 52.07 |   53.52 | 100.00
+ <NA> |   83 |  2.72 |    <NA> |   <NA>
+"

@@ -1,0 +1,11 @@
+"0","frq(data$c06_02_acuerdo)
+"
+"1","[31mDe acuerdo o Muy de acuerdo: apoyo sistema solidario de reparto (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2926 mean=0.60 sd=0.49[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 1157 | 37.96 |   39.54 |  39.54
+    1 | 1769 | 58.04 |   60.46 | 100.00
+ <NA> |  122 |  4.00 |    <NA> |   <NA>
+"

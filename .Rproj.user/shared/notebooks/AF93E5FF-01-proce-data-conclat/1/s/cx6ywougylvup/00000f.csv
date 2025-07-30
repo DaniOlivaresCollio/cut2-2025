@@ -1,0 +1,54 @@
+"0","# Acuerdo: disminuir gasto público para evitar inflación"
+"0","frq(data$c07_03)"
+"1","[31mx[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=3048 mean=-47.57 sd=208.89[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+ -999 |   20 |  0.66 |    0.66 |   0.66
+ -888 |  152 |  4.99 |    4.99 |   5.64
+    1 |  133 |  4.36 |    4.36 |  10.01
+    2 |  333 | 10.93 |   10.93 |  20.93
+    3 |  870 | 28.54 |   28.54 |  49.48
+    4 | 1147 | 37.63 |   37.63 |  87.11
+    5 |  393 | 12.89 |   12.89 | 100.00
+ <NA> |    0 |  0.00 |    <NA> |   <NA>
+"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_03 = ifelse(c07_03 %in% c(-999, -888), NA, c07_03)"
+"0","  ) %>%"
+"0","  set_variable_labels(c07_03 = ""Nivel de acuerdo: disminuir gasto público para evitar inflación (c07_03)"")"
+"0",""
+"0","frq(data$c07_03)"
+"1","[31mNivel de acuerdo: disminuir gasto público para evitar inflación (c07_03) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2876 mean=3.46 sd=1.02[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  133 |  4.36 |    4.62 |   4.62
+    2 |  333 | 10.93 |   11.58 |  16.20
+    3 |  870 | 28.54 |   30.25 |  46.45
+    4 | 1147 | 37.63 |   39.88 |  86.34
+    5 |  393 | 12.89 |   13.66 | 100.00
+ <NA> |  172 |  5.64 |    <NA> |   <NA>
+"
+"0","# Crear variable dicotómica: acuerdo (4 o 5)"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c07_03_acuerdo = ifelse("
+"0","      c07_03 %in% c(4, 5), 1,"
+"0","      ifelse(c07_03 %in% c(1, 2, 3), 0, NA))"
+"0","  )%>%"
+"0","  set_variable_labels(c07_03_acuerdo = ""De acuerdo o Muy de acuerdo: disminuir gasto público para evitar inflación"")"
+"0",""
+"0","frq(data$c07_03_acuerdo)"
+"1","[31mDe acuerdo o Muy de acuerdo: disminuir gasto público para evitar inflación (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2876 mean=0.54 sd=0.50[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 1336 | 43.83 |   46.45 |  46.45
+    1 | 1540 | 50.52 |   53.55 | 100.00
+ <NA> |  172 |  5.64 |    <NA> |   <NA>
+"

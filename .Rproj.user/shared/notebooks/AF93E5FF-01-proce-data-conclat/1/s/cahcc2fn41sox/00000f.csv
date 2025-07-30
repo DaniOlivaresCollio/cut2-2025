@@ -1,0 +1,3 @@
+"0","load(""input/data/datos-conclat.Rdata"")"
+"0","data_raw <- data"
+"0","data_svy <- as_survey_design(data, weights = rake_wb2)"
