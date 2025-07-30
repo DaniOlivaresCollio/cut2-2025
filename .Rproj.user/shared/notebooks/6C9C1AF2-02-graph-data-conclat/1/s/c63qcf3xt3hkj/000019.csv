@@ -1,0 +1,2 @@
+"0",""
+"0","ggsave(""output/c05_02_sexo.png"", plot = grafico, width = 8, height = 5, dpi = 300)"

@@ -230,10 +230,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         c05_03,                      <span class="co"># Acuerdo: alto nivel vida dueños empresas es por pagar poco</span></span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>         c06_02,                      <span class="co"># Acuerdo: apoyo sistema solidario de reparto</span></span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>         c07_01,                      <span class="co"># Acuerdo: aumentar impuestos a los más ricos</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>         c07_03,                      <span class="co"># Acuerdo: disminuir gasto público</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         c07_04,                      <span class="co"># Acuerdo: sindicatos tengan más poder</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>         c07_05,                      <span class="co"># Acuerdo: redistribuir riquezas</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>         c07_06,                      <span class="co"># Acuerdo: igualdad hombres y mujeres</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>         c07_03,                      <span class="co"># Acuerdo: sindicatos tengan más poder</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         c07_04,                      <span class="co"># Acuerdo: redistribuir riquezas</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>         c07_05,                      <span class="co"># Acuerdo: igualdad hombres y mujeres</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>         c07_06,                      <span class="co"># Acuerdo: educación universitaria pública</span></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Demográficas</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">sexo=</span>e01,                    <span class="co"># sexo</span></span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">edad=</span>e02,                    <span class="co"># edad</span></span>
@@ -851,7 +851,7 @@ Value |    N | Raw % | Valid % | Cum. %
 <section id="c07_03" class="level3" data-number="1.3.13">
 <h3 data-number="1.3.13" class="anchored" data-anchor-id="c07_03"><span class="header-section-number">1.3.13</span> c07_03</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: disminuir gasto público para evitar inflación</span></span>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: sindicatos tengan más poder</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_03)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
@@ -872,11 +872,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">c07_03 =</span> <span class="fu">ifelse</span>(c07_03 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>), <span class="cn">NA</span>, c07_03)</span>
 <span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_03 =</span> <span class="st">"Nivel de acuerdo: disminuir gasto público para evitar inflación (c07_03)"</span>)</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_03 =</span> <span class="st">"Nivel de acuerdo: sindicatos tengan más poder(c07_03)"</span>)</span>
 <span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_03)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nivel de acuerdo: disminuir gasto público para evitar inflación (c07_03) (x) &lt;numeric&gt; 
+<pre><code>Nivel de acuerdo: sindicatos tengan más poder(c07_03) (x) &lt;numeric&gt; 
 # total N=3048 valid N=2876 mean=3.46 sd=1.02
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -895,11 +895,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>      c07_03 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">1</span>,</span>
 <span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(c07_03 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">0</span>, <span class="cn">NA</span>))</span>
 <span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_03_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: disminuir gasto público para evitar inflación"</span>)</span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_03_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: sindicatos tengan más poder"</span>)</span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_03_acuerdo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>De acuerdo o Muy de acuerdo: disminuir gasto público para evitar inflación (x) &lt;numeric&gt; 
+<pre><code>De acuerdo o Muy de acuerdo: sindicatos tengan más poder (x) &lt;numeric&gt; 
 # total N=3048 valid N=2876 mean=0.54 sd=0.50
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -913,7 +913,7 @@ Value |    N | Raw % | Valid % | Cum. %
 <section id="c07_04" class="level3" data-number="1.3.14">
 <h3 data-number="1.3.14" class="anchored" data-anchor-id="c07_04"><span class="header-section-number">1.3.14</span> c07_04</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: sindicatos tengan más poder</span></span>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: redistribuir riquezas</span></span>
 <span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_04)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
@@ -934,11 +934,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">c07_04 =</span> <span class="fu">ifelse</span>(c07_04 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>), <span class="cn">NA</span>, c07_04)</span>
 <span id="cb64-4"><a href="#cb64-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_04 =</span> <span class="st">"Nivel de acuerdo: sindicatos tengan más poder (c07_04)"</span>)</span>
+<span id="cb64-5"><a href="#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_04 =</span> <span class="st">"Nivel de acuerdo: redistribuir riquezas (c07_04)"</span>)</span>
 <span id="cb64-6"><a href="#cb64-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-7"><a href="#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_04)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nivel de acuerdo: sindicatos tengan más poder (c07_04) (x) &lt;numeric&gt; 
+<pre><code>Nivel de acuerdo: redistribuir riquezas (c07_04) (x) &lt;numeric&gt; 
 # total N=3048 valid N=2965 mean=3.47 sd=1.05
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -957,11 +957,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>      c07_04 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">1</span>,</span>
 <span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(c07_04 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">0</span>, <span class="cn">NA</span>))</span>
 <span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_04_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: sindicatos tengan más poder"</span>)</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_04_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: redistribuir riquezas"</span>)</span>
 <span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_04_acuerdo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>De acuerdo o Muy de acuerdo: sindicatos tengan más poder (x) &lt;numeric&gt; 
+<pre><code>De acuerdo o Muy de acuerdo: redistribuir riquezas (x) &lt;numeric&gt; 
 # total N=3048 valid N=2965 mean=0.54 sd=0.50
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -975,7 +975,7 @@ Value |    N | Raw % | Valid % | Cum. %
 <section id="c07_05" class="level3" data-number="1.3.15">
 <h3 data-number="1.3.15" class="anchored" data-anchor-id="c07_05"><span class="header-section-number">1.3.15</span> c07_05</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: redistribuir riquezas</span></span>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: igualdad hombres y mujeres</span></span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_05)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
@@ -996,11 +996,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">c07_05 =</span> <span class="fu">ifelse</span>(c07_05 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>), <span class="cn">NA</span>, c07_05)</span>
 <span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_05 =</span> <span class="st">"Nivel de acuerdo: redistribuir riquezas (c07_05)"</span>)</span>
+<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_05 =</span> <span class="st">"Nivel de acuerdo: igualdad hombres y mujeres (c07_05)"</span>)</span>
 <span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_05)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nivel de acuerdo: redistribuir riquezas (c07_05) (x) &lt;numeric&gt; 
+<pre><code>Nivel de acuerdo: igualdad hombres y mujeres (c07_05) (x) &lt;numeric&gt; 
 # total N=3048 valid N=2998 mean=4.04 sd=0.88
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -1019,11 +1019,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>      c07_05 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">1</span>,</span>
 <span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(c07_05 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">0</span>, <span class="cn">NA</span>))</span>
 <span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_05_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: redistribuir riquezas"</span>)</span>
+<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_05_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: igualdad hombres y mujeres"</span>)</span>
 <span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_05_acuerdo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>De acuerdo o Muy de acuerdo: redistribuir riquezas (x) &lt;numeric&gt; 
+<pre><code>De acuerdo o Muy de acuerdo: igualdad hombres y mujeres (x) &lt;numeric&gt; 
 # total N=3048 valid N=2998 mean=0.75 sd=0.43
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -1037,7 +1037,7 @@ Value |    N | Raw % | Valid % | Cum. %
 <section id="c07_06" class="level3" data-number="1.3.16">
 <h3 data-number="1.3.16" class="anchored" data-anchor-id="c07_06"><span class="header-section-number">1.3.16</span> c07_06</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: igualdad entre hombres y mujeres</span></span>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acuerdo: educación universitaria pública</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_06)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>x &lt;numeric&gt; 
@@ -1058,11 +1058,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">c07_06 =</span> <span class="fu">ifelse</span>(c07_06 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>), <span class="cn">NA</span>, c07_06)</span>
 <span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_06 =</span> <span class="st">"Nivel de acuerdo: igualdad entre hombres y mujeres (c07_06)"</span>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_06 =</span> <span class="st">"Nivel de acuerdo: educación universitaria pública (c07_06)"</span>)</span>
 <span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_06)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Nivel de acuerdo: igualdad entre hombres y mujeres (c07_06) (x) &lt;numeric&gt; 
+<pre><code>Nivel de acuerdo: educación universitaria pública (c07_06) (x) &lt;numeric&gt; 
 # total N=3048 valid N=3019 mean=4.05 sd=0.96
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -1081,11 +1081,11 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>      c07_06 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>), <span class="dv">1</span>,</span>
 <span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ifelse</span>(c07_06 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), <span class="dv">0</span>, <span class="cn">NA</span>))</span>
 <span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>  )<span class="sc">%&gt;%</span></span>
-<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_06_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: igualdad entre hombres y mujeres"</span>)</span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">c07_06_acuerdo =</span> <span class="st">"De acuerdo o Muy de acuerdo: educación universitaria pública"</span>)</span>
 <span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c07_06_acuerdo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>De acuerdo o Muy de acuerdo: igualdad entre hombres y mujeres (x) &lt;numeric&gt; 
+<pre><code>De acuerdo o Muy de acuerdo: educación universitaria pública (x) &lt;numeric&gt; 
 # total N=3048 valid N=3019 mean=0.75 sd=0.43
 
 Value |    N | Raw % | Valid % | Cum. %

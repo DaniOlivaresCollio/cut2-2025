@@ -1,1 +1,4 @@
 "0","load(""output/data/datos-cut.Rdata"")"
+"0",""
+"0","# base survey"
+"0","data_svy <- as_survey_design(data, weights = rake_wb2)"
