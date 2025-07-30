@@ -23,10 +23,10 @@ Value |   N | Raw % | Valid % | Cum. %
 "0","  mutate("
 "0","    c01_02 = ifelse(c01_02 %in% c(-999, -888), NA, c01_02)"
 "0","  ) %>%"
-"0","  set_variable_labels(c01_02 = ""Importancia: Reducir desigualdad (c01_02)"")"
+"0","  set_variable_labels(c01_02 = ""Nivel de mportancia: Reducir desigualdad (c01_02)"")"
 "0",""
 "0","frq(data$c01_02)"
-"1","[31mImportancia: Reducir desigualdad (c01_02) (x)[39m[34m <numeric>[39m 
+"1","[31mNivel de mportancia: Reducir desigualdad (c01_02) (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=2912 mean=6.16 sd=2.65[39m
 
 Value |   N | Raw % | Valid % | Cum. %

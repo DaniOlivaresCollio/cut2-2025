@@ -1,2 +1,0 @@
-"0","data <- data %>% "
-"0","  filter(sit_empleo == ""Empleado(a)"")"

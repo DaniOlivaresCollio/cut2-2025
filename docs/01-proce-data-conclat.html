@@ -194,6 +194,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#c07_03-x-edad" id="toc-c07_03-x-edad" class="nav-link" data-scroll-target="#c07_03-x-edad"><span class="header-section-number">1.5.14</span> c07_03 x edad</a></li>
   <li><a href="#c07_04-x-sexo" id="toc-c07_04-x-sexo" class="nav-link" data-scroll-target="#c07_04-x-sexo"><span class="header-section-number">1.5.15</span> c07_04 x sexo</a></li>
   <li><a href="#c07_04-x-edad" id="toc-c07_04-x-edad" class="nav-link" data-scroll-target="#c07_04-x-edad"><span class="header-section-number">1.5.16</span> c07_04 x edad</a></li>
+  <li><a href="#c07_05-x-sexo" id="toc-c07_05-x-sexo" class="nav-link" data-scroll-target="#c07_05-x-sexo"><span class="header-section-number">1.5.17</span> c07_05 x sexo</a></li>
+  <li><a href="#c07_05-x-edad" id="toc-c07_05-x-edad" class="nav-link" data-scroll-target="#c07_05-x-edad"><span class="header-section-number">1.5.18</span> c07_05 x edad</a></li>
+  <li><a href="#c07_06-x-sexo" id="toc-c07_06-x-sexo" class="nav-link" data-scroll-target="#c07_06-x-sexo"><span class="header-section-number">1.5.19</span> c07_06 x sexo</a></li>
+  <li><a href="#c07_06-x-edad" id="toc-c07_06-x-edad" class="nav-link" data-scroll-target="#c07_06-x-edad"><span class="header-section-number">1.5.20</span> c07_06 x edad</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1692,6 +1696,154 @@ Value |    N | Raw % | Valid % | Cum. %
 <p><img src="01-proce-data-conclat_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid" width="672"></p>
 </div>
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/c07_04_edad.png"</span>, <span class="at">plot =</span> grafico, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c07_05-x-sexo" class="level3" data-number="1.5.17">
+<h3 data-number="1.5.17" class="anchored" data-anchor-id="c07_05-x-sexo"><span class="header-section-number">1.5.17</span> c07_05 x sexo</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb113"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular proporción ponderada de acuerdo fuerte por tramo etario</span></span>
+<span id="cb113-2"><a href="#cb113-2" aria-hidden="true" tabindex="-1"></a>acuerdo <span class="ot">&lt;-</span> data_svy <span class="sc">%&gt;%</span></span>
+<span id="cb113-3"><a href="#cb113-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sexo), </span>
+<span id="cb113-4"><a href="#cb113-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(c07_05_acuerdo),</span>
+<span id="cb113-5"><a href="#cb113-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">as.numeric</span>(sit_empleo) <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb113-6"><a href="#cb113-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb113-7"><a href="#cb113-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb113-8"><a href="#cb113-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_acuerdo =</span> <span class="fu">survey_mean</span>(c07_05_acuerdo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb113-9"><a href="#cb113-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb113-10"><a href="#cb113-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-11"><a href="#cb113-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar</span></span>
+<span id="cb113-12"><a href="#cb113-12" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(acuerdo, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> prop_acuerdo)) <span class="sc">+</span></span>
+<span id="cb113-13"><a href="#cb113-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#9e1b1e"</span>) <span class="sc">+</span></span>
+<span id="cb113-14"><a href="#cb113-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb113-15"><a href="#cb113-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(prop_acuerdo, <span class="at">accuracy =</span> <span class="fl">0.1</span>)),</span>
+<span id="cb113-16"><a href="#cb113-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.3</span>,<span class="at">color =</span> <span class="st">"white"</span>,<span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb113-17"><a href="#cb113-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb113-18"><a href="#cb113-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb113-19"><a href="#cb113-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb113-20"><a href="#cb113-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Acuerdo: Acuerdo: redistribuir riquezas por sexo"</span>,</span>
+<span id="cb113-21"><a href="#cb113-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Proporción que responde De acuerdo (4) o Muy de acuerdo (5)"</span>,</span>
+<span id="cb113-22"><a href="#cb113-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Nota: Datos ponderados. N = 2105"</span>,</span>
+<span id="cb113-23"><a href="#cb113-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"sexo"</span>,</span>
+<span id="cb113-24"><a href="#cb113-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje de acuerdo"</span></span>
+<span id="cb113-25"><a href="#cb113-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb113-26"><a href="#cb113-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb113-27"><a href="#cb113-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb113-28"><a href="#cb113-28" aria-hidden="true" tabindex="-1"></a>grafico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-proce-data-conclat_files/figure-html/unnamed-chunk-35-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb114"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/c07_05_sexo.png"</span>, <span class="at">plot =</span> grafico, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c07_05-x-edad" class="level3" data-number="1.5.18">
+<h3 data-number="1.5.18" class="anchored" data-anchor-id="c07_05-x-edad"><span class="header-section-number">1.5.18</span> c07_05 x edad</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb115"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular proporción ponderada de acuerdo fuerte por tramo etario</span></span>
+<span id="cb115-2"><a href="#cb115-2" aria-hidden="true" tabindex="-1"></a>acuerdo <span class="ot">&lt;-</span> data_svy <span class="sc">%&gt;%</span></span>
+<span id="cb115-3"><a href="#cb115-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(edad_tramos), </span>
+<span id="cb115-4"><a href="#cb115-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(c07_05_acuerdo),</span>
+<span id="cb115-5"><a href="#cb115-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">as.numeric</span>(sit_empleo) <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb115-6"><a href="#cb115-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edad_tramos) <span class="sc">%&gt;%</span></span>
+<span id="cb115-7"><a href="#cb115-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb115-8"><a href="#cb115-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_acuerdo =</span> <span class="fu">survey_mean</span>(c07_05_acuerdo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb115-9"><a href="#cb115-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb115-10"><a href="#cb115-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-11"><a href="#cb115-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar</span></span>
+<span id="cb115-12"><a href="#cb115-12" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(acuerdo, <span class="fu">aes</span>(<span class="at">x =</span> edad_tramos, <span class="at">y =</span> prop_acuerdo)) <span class="sc">+</span></span>
+<span id="cb115-13"><a href="#cb115-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#9e1b1e"</span>) <span class="sc">+</span></span>
+<span id="cb115-14"><a href="#cb115-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb115-15"><a href="#cb115-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(prop_acuerdo, <span class="at">accuracy =</span> <span class="fl">0.1</span>)),</span>
+<span id="cb115-16"><a href="#cb115-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.3</span>,<span class="at">color =</span> <span class="st">"white"</span>,<span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb115-17"><a href="#cb115-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb115-18"><a href="#cb115-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb115-19"><a href="#cb115-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb115-20"><a href="#cb115-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Acuerdo: redistribuir riquezas por tramo etario"</span>,</span>
+<span id="cb115-21"><a href="#cb115-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Proporción que responde De acuerdo (4) o Muy de acuerdo (5)"</span>,</span>
+<span id="cb115-22"><a href="#cb115-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Nota: Datos ponderados. N = 2105"</span>,</span>
+<span id="cb115-23"><a href="#cb115-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tramo de edad"</span>,</span>
+<span id="cb115-24"><a href="#cb115-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje de acuerdo"</span></span>
+<span id="cb115-25"><a href="#cb115-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb115-26"><a href="#cb115-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb115-27"><a href="#cb115-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-28"><a href="#cb115-28" aria-hidden="true" tabindex="-1"></a>grafico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-proce-data-conclat_files/figure-html/unnamed-chunk-36-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb116"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/c07_05_edad.png"</span>, <span class="at">plot =</span> grafico, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c07_06-x-sexo" class="level3" data-number="1.5.19">
+<h3 data-number="1.5.19" class="anchored" data-anchor-id="c07_06-x-sexo"><span class="header-section-number">1.5.19</span> c07_06 x sexo</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb117"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular proporción ponderada de acuerdo fuerte por tramo etario</span></span>
+<span id="cb117-2"><a href="#cb117-2" aria-hidden="true" tabindex="-1"></a>acuerdo <span class="ot">&lt;-</span> data_svy <span class="sc">%&gt;%</span></span>
+<span id="cb117-3"><a href="#cb117-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(sexo), </span>
+<span id="cb117-4"><a href="#cb117-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(c07_06_acuerdo),</span>
+<span id="cb117-5"><a href="#cb117-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">as.numeric</span>(sit_empleo) <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb117-6"><a href="#cb117-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sexo) <span class="sc">%&gt;%</span></span>
+<span id="cb117-7"><a href="#cb117-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb117-8"><a href="#cb117-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_acuerdo =</span> <span class="fu">survey_mean</span>(c07_06_acuerdo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb117-9"><a href="#cb117-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb117-10"><a href="#cb117-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-11"><a href="#cb117-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar</span></span>
+<span id="cb117-12"><a href="#cb117-12" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(acuerdo, <span class="fu">aes</span>(<span class="at">x =</span> sexo, <span class="at">y =</span> prop_acuerdo)) <span class="sc">+</span></span>
+<span id="cb117-13"><a href="#cb117-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#9e1b1e"</span>) <span class="sc">+</span></span>
+<span id="cb117-14"><a href="#cb117-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb117-15"><a href="#cb117-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(prop_acuerdo, <span class="at">accuracy =</span> <span class="fl">0.1</span>)),</span>
+<span id="cb117-16"><a href="#cb117-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.3</span>,<span class="at">color =</span> <span class="st">"white"</span>,<span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb117-17"><a href="#cb117-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb117-18"><a href="#cb117-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb117-19"><a href="#cb117-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb117-20"><a href="#cb117-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Acuerdo: igualdad entre hombres y mujeres por sexo"</span>,</span>
+<span id="cb117-21"><a href="#cb117-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Proporción que responde De acuerdo (4) o Muy de acuerdo (5)"</span>,</span>
+<span id="cb117-22"><a href="#cb117-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Nota: Datos ponderados. N = 2105"</span>,</span>
+<span id="cb117-23"><a href="#cb117-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"sexo"</span>,</span>
+<span id="cb117-24"><a href="#cb117-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje de acuerdo"</span></span>
+<span id="cb117-25"><a href="#cb117-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb117-26"><a href="#cb117-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb117-27"><a href="#cb117-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb117-28"><a href="#cb117-28" aria-hidden="true" tabindex="-1"></a>grafico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-proce-data-conclat_files/figure-html/unnamed-chunk-37-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb118"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/c07_06_sexo.png"</span>, <span class="at">plot =</span> grafico, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="c07_06-x-edad" class="level3" data-number="1.5.20">
+<h3 data-number="1.5.20" class="anchored" data-anchor-id="c07_06-x-edad"><span class="header-section-number">1.5.20</span> c07_06 x edad</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb119"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular proporción ponderada de acuerdo fuerte por tramo etario</span></span>
+<span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a>acuerdo <span class="ot">&lt;-</span> data_svy <span class="sc">%&gt;%</span></span>
+<span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(edad_tramos), </span>
+<span id="cb119-4"><a href="#cb119-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(c07_06_acuerdo),</span>
+<span id="cb119-5"><a href="#cb119-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">as.numeric</span>(sit_empleo) <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb119-6"><a href="#cb119-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(edad_tramos) <span class="sc">%&gt;%</span></span>
+<span id="cb119-7"><a href="#cb119-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb119-8"><a href="#cb119-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">prop_acuerdo =</span> <span class="fu">survey_mean</span>(c07_06_acuerdo, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb119-9"><a href="#cb119-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb119-10"><a href="#cb119-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-11"><a href="#cb119-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Graficar</span></span>
+<span id="cb119-12"><a href="#cb119-12" aria-hidden="true" tabindex="-1"></a>grafico <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(acuerdo, <span class="fu">aes</span>(<span class="at">x =</span> edad_tramos, <span class="at">y =</span> prop_acuerdo)) <span class="sc">+</span></span>
+<span id="cb119-13"><a href="#cb119-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#9e1b1e"</span>) <span class="sc">+</span></span>
+<span id="cb119-14"><a href="#cb119-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb119-15"><a href="#cb119-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> scales<span class="sc">::</span><span class="fu">percent</span>(prop_acuerdo, <span class="at">accuracy =</span> <span class="fl">0.1</span>)),</span>
+<span id="cb119-16"><a href="#cb119-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="fl">1.3</span>,<span class="at">color =</span> <span class="st">"white"</span>,<span class="at">size =</span> <span class="dv">4</span></span>
+<span id="cb119-17"><a href="#cb119-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb119-18"><a href="#cb119-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">percent_format</span>(<span class="at">accuracy =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb119-19"><a href="#cb119-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb119-20"><a href="#cb119-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Acuerdo: igualdad entre hombres y mujeres por tramo etario"</span>,</span>
+<span id="cb119-21"><a href="#cb119-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Proporción que responde De acuerdo (4) o Muy de acuerdo (5)"</span>,</span>
+<span id="cb119-22"><a href="#cb119-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Nota: Datos ponderados. N = 2105"</span>,</span>
+<span id="cb119-23"><a href="#cb119-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Tramo de edad"</span>,</span>
+<span id="cb119-24"><a href="#cb119-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Porcentaje de acuerdo"</span></span>
+<span id="cb119-25"><a href="#cb119-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb119-26"><a href="#cb119-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb119-27"><a href="#cb119-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb119-28"><a href="#cb119-28" aria-hidden="true" tabindex="-1"></a>grafico</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="01-proce-data-conclat_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb120"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/c07_06_edad.png"</span>, <span class="at">plot =</span> grafico, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
