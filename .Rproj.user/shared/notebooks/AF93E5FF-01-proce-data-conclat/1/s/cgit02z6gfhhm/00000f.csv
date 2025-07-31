@@ -1,4 +1,4 @@
-"0","# Acuerdo: redistribuir riquezas"
+"0","# Acuerdo: igualdad hombres y mujeres"
 "0","frq(data$c07_05)"
 "1","[31mx[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=3048 mean=-10.92 sd=116.00[39m
@@ -18,10 +18,10 @@ Value |    N | Raw % | Valid % | Cum. %
 "0","  mutate("
 "0","    c07_05 = ifelse(c07_05 %in% c(-999, -888), NA, c07_05)"
 "0","  ) %>%"
-"0","  set_variable_labels(c07_05 = ""Nivel de acuerdo: redistribuir riquezas (c07_05)"")"
+"0","  set_variable_labels(c07_05 = ""Nivel de acuerdo: igualdad hombres y mujeres (c07_05)"")"
 "0",""
 "0","frq(data$c07_05)"
-"1","[31mNivel de acuerdo: redistribuir riquezas (c07_05) (x)[39m[34m <numeric>[39m 
+"1","[31mNivel de acuerdo: igualdad hombres y mujeres (c07_05) (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=2998 mean=4.04 sd=0.88[39m
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -40,10 +40,10 @@ Value |    N | Raw % | Valid % | Cum. %
 "0","      c07_05 %in% c(4, 5), 1,"
 "0","      ifelse(c07_05 %in% c(1, 2, 3), 0, NA))"
 "0","  )%>%"
-"0","  set_variable_labels(c07_05_acuerdo = ""De acuerdo o Muy de acuerdo: redistribuir riquezas"")"
+"0","  set_variable_labels(c07_05_acuerdo = ""De acuerdo o Muy de acuerdo: igualdad hombres y mujeres"")"
 "0",""
 "0","frq(data$c07_05_acuerdo)"
-"1","[31mDe acuerdo o Muy de acuerdo: redistribuir riquezas (x)[39m[34m <numeric>[39m 
+"1","[31mDe acuerdo o Muy de acuerdo: igualdad hombres y mujeres (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=2998 mean=0.75 sd=0.43[39m
 
 Value |    N | Raw % | Valid % | Cum. %

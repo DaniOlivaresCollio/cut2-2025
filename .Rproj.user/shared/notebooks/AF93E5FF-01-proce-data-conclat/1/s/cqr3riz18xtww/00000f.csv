@@ -1,4 +1,4 @@
-"0","# Acuerdo: sindicatos tengan más poder"
+"0","# Acuerdo: redistribuir riquezas"
 "0","frq(data$c07_04)"
 "1","[31mx[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=3048 mean=-21.35 sd=148.55[39m
@@ -18,10 +18,10 @@ Value |    N | Raw % | Valid % | Cum. %
 "0","  mutate("
 "0","    c07_04 = ifelse(c07_04 %in% c(-999, -888), NA, c07_04)"
 "0","  ) %>%"
-"0","  set_variable_labels(c07_04 = ""Nivel de acuerdo: sindicatos tengan más poder (c07_04)"")"
+"0","  set_variable_labels(c07_04 = ""Nivel de acuerdo: redistribuir riquezas (c07_04)"")"
 "0",""
 "0","frq(data$c07_04)"
-"1","[31mNivel de acuerdo: sindicatos tengan más poder (c07_04) (x)[39m[34m <numeric>[39m 
+"1","[31mNivel de acuerdo: redistribuir riquezas (c07_04) (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=2965 mean=3.47 sd=1.05[39m
 
 Value |    N | Raw % | Valid % | Cum. %
@@ -40,10 +40,10 @@ Value |    N | Raw % | Valid % | Cum. %
 "0","      c07_04 %in% c(4, 5), 1,"
 "0","      ifelse(c07_04 %in% c(1, 2, 3), 0, NA))"
 "0","  )%>%"
-"0","  set_variable_labels(c07_04_acuerdo = ""De acuerdo o Muy de acuerdo: sindicatos tengan más poder"")"
+"0","  set_variable_labels(c07_04_acuerdo = ""De acuerdo o Muy de acuerdo: redistribuir riquezas"")"
 "0",""
 "0","frq(data$c07_04_acuerdo)"
-"1","[31mDe acuerdo o Muy de acuerdo: sindicatos tengan más poder (x)[39m[34m <numeric>[39m 
+"1","[31mDe acuerdo o Muy de acuerdo: redistribuir riquezas (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=2965 mean=0.54 sd=0.50[39m
 
 Value |    N | Raw % | Valid % | Cum. %
