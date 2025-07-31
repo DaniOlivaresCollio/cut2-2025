@@ -1,0 +1,3 @@
+"0",""
+"0","# Guardar gráfico"
+"0","ggsave(""output/c07_01_sexo_edad.png"", width = 9, height = 6, dpi = 300)"

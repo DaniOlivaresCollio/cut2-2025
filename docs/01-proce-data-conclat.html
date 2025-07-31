@@ -182,6 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#c07_05" id="toc-c07_05" class="nav-link" data-scroll-target="#c07_05"><span class="header-section-number">1.3.15</span> c07_05</a></li>
   <li><a href="#c07_06" id="toc-c07_06" class="nav-link" data-scroll-target="#c07_06"><span class="header-section-number">1.3.16</span> c07_06</a></li>
   <li><a href="#pol_id" id="toc-pol_id" class="nav-link" data-scroll-target="#pol_id"><span class="header-section-number">1.3.17</span> pol_id</a></li>
+  <li><a href="#politizado" id="toc-politizado" class="nav-link" data-scroll-target="#politizado"><span class="header-section-number">1.3.18</span> politizado</a></li>
   </ul></li>
   <li><a href="#guardar-datos" id="toc-guardar-datos" class="nav-link" data-scroll-target="#guardar-datos"><span class="header-section-number">1.4</span> Guardar datos</a></li>
   </ul>
@@ -235,15 +236,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>         c07_04,                      <span class="co"># Acuerdo: redistribuir riquezas</span></span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>         c07_05,                      <span class="co"># Acuerdo: igualdad hombres y mujeres</span></span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>         c07_06,                      <span class="co"># Acuerdo: educación universitaria pública</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Demográficas</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">sexo=</span>e01,                    <span class="co"># sexo</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">edad=</span>e02,                    <span class="co"># edad</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>         e05,                         <span class="co"># educación  </span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>         c08,                         <span class="co"># posición política</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>         a25,a25_esp,a25_esp_rec,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>         a26,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>         a27)<span class="co"># %&gt;% </span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="co">#sjlabelled::set_na(.,na=c(-999,-888,-777))</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>         c08,                         <span class="co"># posición política    </span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         c10_01,                      <span class="co"># habla de politica con amigos</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>         c15_01,                      <span class="co"># confia en partidos políticos</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>         <span class="co"># Demográficas</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">sexo=</span>e01,                    <span class="co"># sexo</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">edad=</span>e02,                    <span class="co"># edad</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>         e05,                         <span class="co"># educación  </span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>         a25,a25_esp,a25_esp_rec,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>         a26,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>         a27)<span class="co"># %&gt;% </span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="co">#sjlabelled::set_na(.,na=c(-999,-888,-777))</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="procesamiento" class="level2" data-number="1.3">
@@ -1162,15 +1165,69 @@ No se identifica |  876 | 28.74 |   28.74 | 100.00
 </div>
 </div>
 </section>
+<section id="politizado" class="level3" data-number="1.3.18">
+<h3 data-number="1.3.18" class="anchored" data-anchor-id="politizado"><span class="header-section-number">1.3.18</span> politizado</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c10_01)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;numeric&gt; 
+# total N=3048 valid N=3048 mean=-35.46 sd=184.25
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+ -999 |   49 |  1.61 |    1.61 |   1.61
+ -888 |   74 |  2.43 |    2.43 |   4.04
+    1 | 1097 | 35.99 |   35.99 |  40.03
+    2 |  665 | 21.82 |   21.82 |  61.84
+    3 |  668 | 21.92 |   21.92 |  83.76
+    4 |  336 | 11.02 |   11.02 |  94.78
+    5 |  159 |  5.22 |    5.22 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>c15_01)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>x &lt;numeric&gt; 
+# total N=3048 valid N=3048 mean=-26.58 sd=159.36
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+ -999 |   22 |  0.72 |    0.72 |   0.72
+ -888 |   73 |  2.40 |    2.40 |   3.12
+    1 | 1437 | 47.15 |   47.15 |  50.26
+    2 |  601 | 19.72 |   19.72 |  69.98
+    3 |  558 | 18.31 |   18.31 |  88.29
+    4 |  301 |  9.88 |    9.88 |  98.16
+    5 |   56 |  1.84 |    1.84 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">politizado =</span> <span class="fu">if_else</span>(</span>
+<span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>      c10_01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">&amp;</span> c15_01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),<span class="dv">1</span>,<span class="dv">0</span></span>
+<span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">politizado =</span> <span class="st">"Politizado o No politizado"</span>)</span>
+<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>politizado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Politizado o No politizado (x) &lt;numeric&gt; 
+# total N=3048 valid N=3048 mean=0.10 sd=0.30
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 2741 | 89.93 |   89.93 |  89.93
+    1 |  307 | 10.07 |   10.07 | 100.00
+ &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+</div>
+</div>
+</section>
 </section>
 <section id="guardar-datos" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="guardar-datos"><span class="header-section-number">1.4</span> Guardar datos</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(data,<span class="at">file=</span><span class="st">"output/data/datos-cut.Rdata"</span>)</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(data,<span class="at">file=</span><span class="st">"output/data/datos-cut.rds"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(data,<span class="at">file=</span><span class="st">"output/data/datos-cut.Rdata"</span>)</span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(data,<span class="at">file=</span><span class="st">"output/data/datos-cut.rds"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>incluir en la base autonomiac control participacion e n el lugar de trabajo instrumentalidad de los sindicatos justicia distributiva plazos ajustados</p>
-<p>izq dere con sexo y edad politizados no politizados grilla de 4 con identificación grilla de 2 con politizados y no politizados</p>
 
 
 </section>
