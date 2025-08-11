@@ -1,4 +1,4 @@
-# Gráficos Data Conclat
+# Gráficos 3
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 rm(list=ls())
@@ -45,7 +45,7 @@ load("output/data/datos-cut.Rdata")
 data_svy <- as_survey_design(data, weights = rake_wb2)
 ```
 
-## Gráficos 
+## Gráficos
 
 ### c01_01 x sexo x edad
 
@@ -346,6 +346,7 @@ grafico
 
 ggsave("output/pol_id_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
 ```
+
 ### politizado x sexo x edad
 
 ```{r}
