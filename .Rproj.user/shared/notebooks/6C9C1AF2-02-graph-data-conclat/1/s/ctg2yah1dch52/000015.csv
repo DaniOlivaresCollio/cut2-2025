@@ -1,0 +1,7 @@
+"0","# Graficar con función"
+"0","graficar_distribucion_por_sexo("
+"0","  data = data_svy,"
+"0","  variable_binaria = ""c07_05_acuerdo"","
+"0","  titulo = ""Acuerdo con: Promover la igualdad entre hombres y mujeres"","
+"0","  nombre_archivo = ""c07_05_sexo_edad"""
+"0",")"

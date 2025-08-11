@@ -1,0 +1,6 @@
+"0","# Unir a tu base data_svy 
+data <- data %>%
+  left_join(datos_clases_sel, by = ""id"")
+"
+"2","Error: objeto 'datos_clases_sel' no encontrado
+"

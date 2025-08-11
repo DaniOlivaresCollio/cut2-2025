@@ -1,0 +1,7 @@
+"0","# Graficar con función"
+"0","graficar_distribucion_por_sexo("
+"0","  data = data_svy,"
+"0","  variable_binaria = ""c06_02_acuerdo"","
+"0","  titulo = ""Acuerdo con: Apoyaría una reforma para crear un sistema solidario de reparto \nsi eso permite subir las pensiones"","
+"0","  nombre_archivo = ""c06_02_sexo_edad"""
+"0",")"

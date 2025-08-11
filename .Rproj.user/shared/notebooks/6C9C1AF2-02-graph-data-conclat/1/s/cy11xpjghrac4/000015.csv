@@ -1,0 +1,7 @@
+"0","# Graficar con función"
+"0","graficar_distribucion_por_sexo("
+"0","  data = data_svy,"
+"0","  variable_binaria = ""c05_02_acuerdo"","
+"0","  titulo = ""Acuerdo con: Una de las principales razones de la alta desigualdad en Chile \nes que los dueños de las empresas pagan poco a sus trabajadores"","
+"0","  nombre_archivo = ""c05_02_sexo_edad"""
+"0",")"
