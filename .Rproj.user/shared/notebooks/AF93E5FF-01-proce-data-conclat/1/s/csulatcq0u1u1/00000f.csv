@@ -1,2 +1,0 @@
-"0","save(data,file=""output/data/datos-cut.Rdata"")"
-"0","saveRDS(data,file=""output/data/datos-cut.rds"")"
