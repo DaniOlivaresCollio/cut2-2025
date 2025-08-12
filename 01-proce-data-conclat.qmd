@@ -500,6 +500,21 @@ data <- data %>%
 frq(data$politizado)
 ```
 
+### clases
+
+```{r}
+# Cargar data clases
+data_clases <- readRDS("input/data/datos-clases.rds")
+
+# Seleccionar solo clave y variables
+datos_clases_sel <- data_clases %>%
+  select(id, wrightclass1_reduced, wrightclass2_reduced)
+
+# Unir a base 
+data <- data %>%
+  left_join(datos_clases_sel, by = "id")
+```
+
 ## Guardar datos
 
 ```{r}

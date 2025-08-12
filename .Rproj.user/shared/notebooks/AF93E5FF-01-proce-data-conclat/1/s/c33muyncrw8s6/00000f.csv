@@ -1,0 +1,54 @@
+"0","# c06_02: Acuerdo: apoyo sistema solidario de reparto"
+"0","frq(data$c06_02)"
+"1","[31mx[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=3048 mean=-32.55 sd=177.26[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+ -999 |   13 |  0.43 |    0.43 |   0.43
+ -888 |  109 |  3.58 |    3.58 |   4.00
+    1 |  139 |  4.56 |    4.56 |   8.56
+    2 |  269 |  8.83 |    8.83 |  17.39
+    3 |  749 | 24.57 |   24.57 |  41.96
+    4 | 1206 | 39.57 |   39.57 |  81.53
+    5 |  563 | 18.47 |   18.47 | 100.00
+ <NA> |    0 |  0.00 |    <NA> |   <NA>
+"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c06_02 = ifelse(c06_02 %in% c(-999, -888), NA, c06_02)"
+"0","  ) %>%"
+"0","  set_variable_labels(c06_02 = ""Nivel de acuerdo: apoyo sistema solidario de reparto (c06_02)"")"
+"0",""
+"0","frq(data$c06_02)"
+"1","[31mNivel de acuerdo: apoyo sistema solidario de reparto (c06_02) (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2926 mean=3.61 sd=1.04[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    1 |  139 |  4.56 |    4.75 |   4.75
+    2 |  269 |  8.83 |    9.19 |  13.94
+    3 |  749 | 24.57 |   25.60 |  39.54
+    4 | 1206 | 39.57 |   41.22 |  80.76
+    5 |  563 | 18.47 |   19.24 | 100.00
+ <NA> |  122 |  4.00 |    <NA> |   <NA>
+"
+"0","# Crear variable dicotómica: acuerdo (4 o 5)"
+"0","data <- data %>%"
+"0","  mutate("
+"0","    c06_02_acuerdo = ifelse("
+"0","      c06_02 %in% c(4, 5), 1,"
+"0","      ifelse(c06_02 %in% c(1, 2, 3), 0, NA))"
+"0","  )%>%"
+"0","  set_variable_labels(c06_02_acuerdo = ""De acuerdo o Muy de acuerdo: apoyo sistema solidario de reparto"")"
+"0",""
+"0","frq(data$c06_02_acuerdo)"
+"1","[31mDe acuerdo o Muy de acuerdo: apoyo sistema solidario de reparto (x)[39m[34m <numeric>[39m 
+[34m# total N=3048 valid N=2926 mean=0.60 sd=0.49[39m
+
+Value |    N | Raw % | Valid % | Cum. %
+---------------------------------------
+    0 | 1157 | 37.96 |   39.54 |  39.54
+    1 | 1769 | 58.04 |   60.46 | 100.00
+ <NA> |  122 |  4.00 |    <NA> |   <NA>
+"

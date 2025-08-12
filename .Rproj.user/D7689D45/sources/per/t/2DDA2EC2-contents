@@ -1,4 +1,4 @@
-# Gráficos 2
+# Gráficos 2: Edad x sexo, primera versión
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 rm(list=ls())
@@ -20,6 +20,7 @@ p_load(bookdown,
        psych,
        readr,
        readxl,
+       rlang,
        scales,         # para etiquetas en gráficos
        shadowtext,
        sjmisc,
@@ -85,7 +86,7 @@ ggplot(promedios_sexo_edad, aes(x = edad_tramos, y = promedio, fill = sexo)) +
   theme_minimal()
 
 # Guardar
-ggsave("output/c01_01_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c01_01_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c01_02 x sexo x edad
@@ -126,7 +127,7 @@ ggplot(promedios_c01_02, aes(x = edad_tramos, y = promedio, fill = sexo)) +
   theme_minimal()
 
 # Guardar
-ggsave("output/c01_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c01_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c05_02 x sexo x edad
@@ -167,7 +168,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c05_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c05_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c05_03 x sexo x edad
@@ -208,7 +209,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c05_03_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c05_03_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c06_02 x sexo x edad
@@ -249,7 +250,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c06_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c06_02_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c07_01 x sexo x edad
@@ -290,7 +291,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c07_01_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c07_01_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c07_03 x sexo x edad
@@ -331,7 +332,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c07_03_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c07_03_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c07_04 x sexo x edad
@@ -372,7 +373,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c07_04_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c07_04_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c07_05 x sexo x edad
@@ -413,7 +414,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c07_05_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c07_05_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### c07_06 x sexo x edad
@@ -454,7 +455,7 @@ ggplot(acuerdo_sexo_edad, aes(x = edad_tramos, y = prop_acuerdo, fill = sexo)) +
   theme_minimal()
 
 # Guardar gráfico
-ggsave("output/c07_06_sexo_edad.png", width = 9, height = 6, dpi = 300)
+ggsave("output/graph2/c07_06_sexo_edad.png", width = 9, height = 6, dpi = 300)
 ```
 
 ### pol_id x sexo x edad
@@ -501,7 +502,7 @@ grafico <- ggplot(pol_id_sexo_edad, aes(x = edad_tramos, y = prop, fill = pol_id
 
 grafico
 
-ggsave("output/pol_id_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
+ggsave("output/graph2/pol_id_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
 ```
 
 ### politizado x sexo x edad
@@ -536,5 +537,110 @@ ggplot(politizacion, aes(x = edad_tramos, y = prop, fill = sexo)) +
   ) +
   theme_minimal()
 
-ggsave("output/politizacion_sexo_edad.png", width = 10, height = 6, dpi = 300)
+ggsave("output/graph2/politizacion_sexo_edad.png", width = 10, height = 6, dpi = 300)
 ```
+
+### clases 1 x sexo x edad
+
+```{r}
+# Calcular proporciones por sexo y edad
+class1_sexo_edad <- data_svy %>%
+  filter(
+    !is.na(sexo),
+    !is.na(edad_tramos),
+    !is.na(wrightclass1_reduced)
+  ) %>%
+  group_by(edad_tramos, sexo, wrightclass1_reduced) %>%
+  summarise(prop = survey_mean(na.rm = TRUE)) %>%
+  ungroup()
+
+# Graficar
+grafico <- ggplot(class1_sexo_edad, aes(x = edad_tramos, y = prop, fill = wrightclass1_reduced)) +
+  geom_col(position = "fill", color = "white") +
+  geom_text(
+    aes(label = ifelse(prop > 0.04, paste0(round(prop * 100, 1), "%"), "")),  # mostrar solo si es >4%
+    position = position_fill(vjust = 0.5),
+    color = "white",
+    size = 3.5
+  ) +
+  facet_wrap(~sexo) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_fill_manual(
+    values = c(
+      "1. Formal workers" = "#6f0000",
+      "2. Informal workers" = "#9e1b1e",
+      "3. Informal self-employed" = "#ca0000",
+      "4. Experts" = "#ff5651",
+      "5. Supervisors" ="#b23a48",
+      "6. Managers" = "#8c1d40",
+      "7. Petty bourgeoisie" = "#d1eaf3",
+      "8. Small employers" = "#0f6481",
+      "9. Employers" = "#083342"
+  )) +
+  labs(
+    title = "Clases",
+    subtitle = "Porcentajes según sexo y tramo etario",
+    x = "Tramo de edad",
+    y = "Porcentaje",
+    fill = "Clases",
+    caption = "Nota: Datos ponderados. N = 3048."
+  ) +
+  theme_minimal()
+
+grafico
+
+ggsave("output/graph2/class1_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
+```
+
+### clases 2 x sexo x edad
+
+```{r}
+# Calcular proporciones por sexo y edad
+class2_sexo_edad <- data_svy %>%
+  filter(
+    !is.na(sexo),
+    !is.na(edad_tramos),
+    !is.na(wrightclass2_reduced)
+  ) %>%
+  group_by(edad_tramos, sexo, wrightclass2_reduced) %>%
+  summarise(prop = survey_mean(na.rm = TRUE)) %>%
+  ungroup()
+
+# Graficar
+grafico <- ggplot(class2_sexo_edad, aes(x = edad_tramos, y = prop, fill = wrightclass2_reduced)) +
+  geom_col(position = "fill", color = "white") +
+  geom_text(
+    aes(label = ifelse(prop > 0.04, paste0(round(prop * 100, 1), "%"), "")),  # mostrar solo si es >4%
+    position = position_fill(vjust = 0.5),
+    color = "white",
+    size = 3.5
+  ) +
+  facet_wrap(~sexo) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_fill_manual(
+    values = c(
+      "1. Formal workers" = "#6f0000",
+      "2. Informal workers" = "#9e1b1e",
+      "3. Informal self-employed" = "#ca0000",
+      "4. Experts" = "#ff5651",
+      "5. Supervisors" ="#b23a48",
+      "6. Managers" = "#8c1d40",
+      "7. Petty bourgeoisie" = "#d1eaf3",
+      "8. Small employers" = "#0f6481",
+      "9. Capitalists" = "#083342"
+  )) +
+  labs(
+    title = "Clases 2",
+    subtitle = "Porcentajes según sexo y tramo etario",
+    x = "Tramo de edad",
+    y = "Porcentaje",
+    fill = "Clases 2",
+    caption = "Nota: Datos ponderados. N = 3048."
+  ) +
+  theme_minimal()
+
+grafico
+
+ggsave("output/graph2/class2_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
+```
+

@@ -1,0 +1,7 @@
+"0","# Graficar con función"
+"0","graficar_distribucion_por_sexo("
+"0","  data = data_svy,"
+"0","  variable_binaria = ""c07_06_acuerdo"","
+"0","  titulo = ""Acuerdo con: Garantizar la educación universitaria pública y gratuita"","
+"0","  nombre_archivo = ""c07_06_sexo_edad"""
+"0",")"
