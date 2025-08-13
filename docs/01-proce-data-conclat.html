@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-graph-data-conclat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gráficos 4: Clase</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Gráficos 4: Clase y politizaciòn</span></span></a>
   </div>
 </li>
     </ul>
@@ -1247,18 +1247,22 @@ Value |    N | Raw % | Valid % | Cum. %
 <span id="cb88-4"><a href="#cb88-4" aria-hidden="true" tabindex="-1"></a>      c10_01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>) <span class="sc">&amp;</span> c15_01 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>),<span class="dv">1</span>,<span class="dv">0</span></span>
 <span id="cb88-5"><a href="#cb88-5" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb88-6"><a href="#cb88-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
-<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">politizado =</span> <span class="st">"Politizado o No politizado"</span>)</span>
-<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>politizado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb88-7"><a href="#cb88-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_variable_labels</span>(<span class="at">politizado =</span> <span class="st">"Politizado o No politizado"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb88-8"><a href="#cb88-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_value_labels</span>(<span class="at">politizado =</span> <span class="fu">c</span>(</span>
+<span id="cb88-9"><a href="#cb88-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sí"</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb88-10"><a href="#cb88-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No"</span> <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb88-11"><a href="#cb88-11" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb88-12"><a href="#cb88-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-13"><a href="#cb88-13" aria-hidden="true" tabindex="-1"></a><span class="fu">frq</span>(data<span class="sc">$</span>politizado)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Politizado o No politizado (x) &lt;numeric&gt; 
 # total N=3048 valid N=3048 mean=0.10 sd=0.30
 
-Value |    N | Raw % | Valid % | Cum. %
----------------------------------------
-    0 | 2741 | 89.93 |   89.93 |  89.93
-    1 |  307 | 10.07 |   10.07 | 100.00
- &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
+Value | Label |    N | Raw % | Valid % | Cum. %
+-----------------------------------------------
+    0 |    No | 2741 | 89.93 |   89.93 |  89.93
+    1 |    Sí |  307 | 10.07 |   10.07 | 100.00
+ &lt;NA&gt; |  &lt;NA&gt; |    0 |  0.00 |    &lt;NA&gt; |   &lt;NA&gt;</code></pre>
 </div>
 </div>
 </section>

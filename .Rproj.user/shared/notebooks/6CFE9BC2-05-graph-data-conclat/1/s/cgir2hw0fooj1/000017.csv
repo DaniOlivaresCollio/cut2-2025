@@ -1,4 +1,0 @@
-"0",""
-"0","ggsave(""output/graph4/class1.png"", plot = grafico, width = 10, height = 6, dpi = 300)"
-"2","Error: object 'grafico' not found
-"

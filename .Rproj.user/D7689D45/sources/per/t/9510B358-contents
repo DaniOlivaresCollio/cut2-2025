@@ -495,8 +495,12 @@ data <- data %>%
       c10_01 %in% c(4, 5) & c15_01 %in% c(3, 4, 5),1,0
     )
   ) %>% 
-  set_variable_labels(politizado = "Politizado o No politizado")
-  
+  set_variable_labels(politizado = "Politizado o No politizado") %>% 
+  set_value_labels(politizado = c(
+    "Sí" = 1,
+    "No" = 0
+  ))
+
 frq(data$politizado)
 ```
 

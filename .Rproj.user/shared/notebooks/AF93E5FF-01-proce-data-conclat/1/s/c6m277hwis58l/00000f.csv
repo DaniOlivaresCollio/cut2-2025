@@ -34,15 +34,19 @@ Value |    N | Raw % | Valid % | Cum. %
 "0","      c10_01 %in% c(4, 5) & c15_01 %in% c(3, 4, 5),1,0"
 "0","    )"
 "0","  ) %>% "
-"0","  set_variable_labels(politizado = ""Politizado o No politizado"")"
-"0","  "
+"0","  set_variable_labels(politizado = ""Politizado o No politizado"") %>% "
+"0","  set_value_labels(politizado = c("
+"0","    ""Sí"" = 1,"
+"0","    ""No"" = 0"
+"0","  ))"
+"0",""
 "0","frq(data$politizado)"
 "1","[31mPolitizado o No politizado (x)[39m[34m <numeric>[39m 
 [34m# total N=3048 valid N=3048 mean=0.10 sd=0.30[39m
 
-Value |    N | Raw % | Valid % | Cum. %
----------------------------------------
-    0 | 2741 | 89.93 |   89.93 |  89.93
-    1 |  307 | 10.07 |   10.07 | 100.00
- <NA> |    0 |  0.00 |    <NA> |   <NA>
+Value | Label |    N | Raw % | Valid % | Cum. %
+-----------------------------------------------
+    0 |    No | 2741 | 89.93 |   89.93 |  89.93
+    1 |    Sí |  307 | 10.07 |   10.07 | 100.00
+ <NA> |  <NA> |    0 |  0.00 |    <NA> |   <NA>
 "

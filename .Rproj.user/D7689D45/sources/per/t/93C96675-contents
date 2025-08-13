@@ -1,4 +1,6 @@
-# Gráficos 4: Clase
+# Gráficos 4: Clase y politizaciòn
+
+## Preparación
 
 ```{r,echo=FALSE,warning=FALSE,message=FALSE}
 rm(list=ls())
@@ -37,7 +39,7 @@ p_load(bookdown,
        )
 ```
 
-## Cargar datos
+### Cargar datos
 
 ```{r datos,message=FALSE,warning=FALSE}
 load("output/data/datos-cut.Rdata")
@@ -46,7 +48,7 @@ load("output/data/datos-cut.Rdata")
 data_svy <- as_survey_design(data, weights = rake_wb2)
 ```
 
-## Gráficos
+## Clases
 
 ### clase 1 reduced
 
@@ -236,12 +238,12 @@ plot_binary_by <- function(
   x_var,               # categórica para eje X
   fill_var,            # categórica para fill
   title,               # título del gráfico
+  subtitle,            # subtítulo del gráfico
 
   # ---- Etiquetas ----
   x_label = NULL,
   y_label = "Porcentaje",
   fill_label = NULL,
-  subtitle = "Porcentaje según sexo y clase social",
   caption = NULL,
 
   # ---- Porcentajes ----
@@ -372,6 +374,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Una de las principales razones de la alta desigualdad en Chile \nes que los dueños de las empresas pagan poco a sus trabajadores",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -388,6 +391,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: El alto nivel de vida de los dueños de las empresas es resultado \nde lo poco que pagan a sus trabajadores",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -404,6 +408,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Apoyaría una reforma para crear un sistema solidario de reparto \nsi eso permite subir las pensiones",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -420,6 +425,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Aumentar los impuestos a los más ricos para financiar \nprogramas sociales",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -436,6 +442,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Implementar leyes para que los sindicatos tengan más poder \nde negociación",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -452,6 +459,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Redistribuir las riquezas desde quienes tienen más recursos \nhacia quienes tienen menos recursos",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -468,6 +476,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Promover la igualdad entre hombres y mujeres",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -484,6 +493,7 @@ plot_binary_by(
   x_var = wrightclass1_reduced,
   fill_var = sexo,
   title = "Acuerdo con: Garantizar la educación universitaria pública y gratuita",
+  subtitle = "Porcentaje según sexo y clase social",
   x_label = "Clase social",
   fill_label = "Sexo",
   palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
@@ -491,3 +501,140 @@ plot_binary_by(
 )
 ```
 
+## Politización
+
+### c05_02 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_02_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Una de las principales razones de la alta desigualdad en Chile \nes que los dueños de las empresas pagan poco a sus trabajadores",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c05_03 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_03_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: El alto nivel de vida de los dueños de las empresas es resultado \nde lo poco que pagan a sus trabajadores",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c06_02 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c06_02_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Apoyaría una reforma para crear un sistema solidario de reparto \nsi eso permite subir las pensiones",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c07_01 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_01_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Aumentar los impuestos a los más ricos para financiar \nprogramas sociales",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c07_03 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_03_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Implementar leyes para que los sindicatos tengan más poder \nde negociación",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c07_04 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_04_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Redistribuir las riquezas desde quienes tienen más recursos \nhacia quienes tienen menos recursos",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c07_05 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_05_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Promover la igualdad entre hombres y mujeres",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```
+
+### c07_06 x polit x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_06_acuerdo,
+  x_var = politizado,
+  fill_var = sexo,
+  title = "Acuerdo con: Garantizar la educación universitaria pública y gratuita",
+  subtitle = "Porcentaje según sexo y estatus de politización",
+  x_label = "Politizado",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 0
+)
+```

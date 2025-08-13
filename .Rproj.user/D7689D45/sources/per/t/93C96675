@@ -3,7 +3,7 @@
     "path": "C:/Users/danie/Documents/fondecyt/cut2-2025/05-graph-data-conclat.qmd",
     "project_path": "05-graph-data-conclat.qmd",
     "type": "quarto_markdown",
-    "hash": "2778243439",
+    "hash": "2660095705",
     "contents": "",
     "dirty": false,
     "created": 1755018767560.0,
@@ -17,15 +17,15 @@
         "docOutlineVisible": "1",
         "rmdVisualCollapsedChunks": "",
         "rmdVisualModeLocation": "2:0",
-        "cursorPosition": "79,35",
-        "scrollLine": "43"
+        "cursorPosition": "637,18",
+        "scrollLine": "602"
     },
     "folds": "",
-    "lastKnownWriteTime": 1755026309,
+    "lastKnownWriteTime": 1755092906,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1755026309514,
+    "last_content_update": 1755092968409,
     "read_only": false,
     "read_only_alternatives": []
 }
