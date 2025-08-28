@@ -42,3 +42,5 @@
 "0","  curl,              # conexiones http de bajo nivel: para solucionar el problema de la api del ine"
 "0","  httr               # cliente http para API"
 "0","  )"
+"2","Initiating curl with CURL_SSL_BACKEND: openssl
+"
