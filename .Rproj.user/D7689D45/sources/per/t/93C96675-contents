@@ -467,7 +467,7 @@ plot_binary_by(
 )
 ```
 
-## Clase y sexo
+## Clase 1 y sexo
 
 ### clase 1 reduced
 
@@ -1183,3 +1183,484 @@ grafico
 ggsave("output/graph4/pol_id_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
 ```
 
+## Clase 2 y sexo
+
+### clase 2 reduced
+
+```{r}
+# Calcular proporciones ponderadas solo por clase social
+tabla_total <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced)) %>% 
+  group_by(wrightclass2_reduced) %>%
+  summarise(prop = survey_mean(vartype = NULL, proportion = TRUE)) %>%
+  ungroup()
+
+n_unw <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced)) %>%
+  summarise(N = unweighted(n())) %>%
+  pull(N)
+
+# Gráfico
+ggplot(tabla_total, aes(x = wrightclass2_reduced, y = prop)) +
+  geom_col(fill = "#9e1b1e") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(label = paste0(round(prop * 100, 1), "%")),
+    vjust = -0.3,
+    color = "black",
+    size = 3
+  ) +
+  labs(
+    title = "Distribución de la población por clase social",
+    caption = paste0("Fuente: Elaboración propia con datos de la Encuesta Conclat Chile 2024. Datos ponderados. N = ", n_unw),
+    x = "Clase social",
+    y = "Porcentaje"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("output/graph4/class2.png", width = 10, height = 6, dpi = 300)
+```
+
+### clase x sexo
+
+```{r}
+# Calcular totales ponderados por clase x sexo
+tabla_total <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo)) %>%
+  group_by(wrightclass2_reduced, sexo) %>%
+  summarise(n = survey_total(vartype = NULL)) %>%
+  ungroup() %>%
+  # (opcional) asegurar combinaciones faltantes con 0
+  complete(wrightclass2_reduced, sexo, fill = list(n = 0)) %>%
+  group_by(sexo) %>%
+  mutate(prop = n / sum(n)) %>%      # proporción dentro de cada sexo
+  ungroup()
+
+n_unw <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo)) %>%
+  summarise(N = unweighted(n())) %>%
+  pull(N)
+
+# Gráfico: barras agrupadas (dodge), normalizadas dentro de cada sexo
+ggplot(tabla_total, aes(x = wrightclass2_reduced, y = prop, fill = sexo)) +
+  geom_col(position = position_dodge(width = 0.8)) +
+  scale_fill_manual(values = c("Mujer" = "#f25f5c", "Hombre" = "#9e1b1e")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(label = paste0(round(prop * 100, 1), "%")),
+    position = position_dodge(width = 0.8),
+    vjust = -0.3,
+    size = 2.8
+  ) +
+  labs(
+    title = "Distribución por clase social dentro de cada sexo",
+    x = "Clase social",
+    y = "Porcentaje",
+    fill = "Sexo",
+    caption = paste0("Fuente: Elaboración propia con datos de la Encuesta Conclat Chile 2024. Datos ponderados. N = ", n_unw)
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("output/graph4/class2_sexo.png", width = 10, height = 6, dpi = 300)
+```
+
+### sexo x clase
+
+```{r}
+# Calcular proporciones ponderadas por clase social y sexo
+tabla_total <- data_svy %>%
+  filter(
+    !is.na(wrightclass2_reduced),
+    !is.na(sexo)
+  ) %>% 
+  group_by(wrightclass2_reduced, sexo) %>%
+  summarise(prop = survey_mean(vartype = NULL, proportion = TRUE)) %>%
+  ungroup()
+
+n_unw <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo)) %>%
+  summarise(N = unweighted(n())) %>%
+  pull(N)
+
+# Gráfico
+ggplot(tabla_total, aes(x = wrightclass2_reduced, y = prop, fill = sexo)) +
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = c("Mujer" = "#f25f5c", "Hombre" = "#9e1b1e")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(label = round(prop * 100, 1)),
+    position = position_dodge(width = 0.8),
+    vjust = 1.3,
+    color = "white",
+    size = 3
+  ) +
+  labs(
+    title = "Porcentaje de hombres y mujeres en cada categoría de clase social",
+    caption = paste0("Fuente: Elaboración propia con datos de la Encuesta Conclat Chile 2024. Datos ponderados. N = ", n_unw),
+    x = "Clase social",
+    y = "Porcentaje",
+    fill = "Sexo"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+
+ggsave("output/graph4/class2_sexo_by_class.png", width = 10, height = 6, dpi = 300)
+```
+
+### sexo x clase 2
+
+```{r}
+# Totales ponderados por clase x sexo y proporciones dentro de cada clase
+tabla_total <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo)) %>%
+  group_by(wrightclass2_reduced, sexo) %>%
+  summarise(n = survey_total(vartype = NULL)) %>%   # totales ponderados
+  group_by(wrightclass2_reduced) %>%
+  mutate(prop = n / sum(n)) %>%                     # % dentro de cada clase
+  ungroup()
+
+n_unw <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo)) %>%
+  summarise(N = unweighted(n())) %>%
+  pull(N)
+
+# Gráfico apilado (cada barra suma 100%)
+ggplot(tabla_total, aes(x = wrightclass2_reduced, y = prop, fill = sexo)) +
+  geom_col(position = "stack") +
+  scale_fill_manual(values = c("Mujer" = "#f25f5c", "Hombre" = "#9e1b1e")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  geom_text(
+    aes(label = paste0(round(prop * 100, 1), "%")),
+    position = position_stack(vjust = 0.5),
+    color = "white",
+    size = 2.8
+  ) +
+  labs(
+    title = "Composición por sexo dentro de cada clase social",
+    caption = paste0("Fuente: Elaboración propia con datos de la Encuesta Conclat Chile 2024. Datos ponderados. N = ", n_unw),
+    x = "Clase social",
+    y = "Porcentaje dentro de la clase",
+    fill = "Sexo"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave("output/graph4/class2_sexo_by_class_2.png", width = 10, height = 6, dpi = 300)
+```
+
+### clase x sexo x edad
+
+```{r}
+# Calcular proporciones por sexo y edad
+class1_sexo_edad <- data_svy %>%
+  filter(
+    !is.na(sexo),
+    !is.na(edad_tramos),
+    !is.na(wrightclass2_reduced)
+  ) %>%
+  group_by(edad_tramos, sexo, wrightclass2_reduced) %>%
+  summarise(prop = survey_mean(na.rm = TRUE)) %>%
+  ungroup()
+
+n_unw <- data_svy %>%
+  filter(!is.na(wrightclass2_reduced), !is.na(sexo), !is.na(edad_tramos)) %>%
+  summarise(N = unweighted(n())) %>%
+  pull(N)
+
+# Graficar
+grafico <- ggplot(class1_sexo_edad, aes(x = edad_tramos, y = prop, fill = wrightclass2_reduced)) +
+  geom_col(position = "fill", color = "white") +
+  geom_text(
+    aes(label = ifelse(prop > 0.04, paste0(round(prop * 100, 1), "%"), "")),  # mostrar solo si es >4%
+    position = position_fill(vjust = 0.5),
+    color = "white",
+    size = 3.5
+  ) +
+  facet_wrap(~sexo) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_fill_manual(
+    values = c(
+      "1. Formal workers" = "#6f0000",
+      "2. Informal workers" = "#9e1b1e",
+      "3. Informal self-employed" = "#ca0000",
+      "4. Experts" = "#ff5651",
+      "5. Supervisors" ="#b23a48",
+      "6. Managers" = "#8c1d40",
+      "7. Petty bourgeoisie" = "#d1eaf3",
+      "8. Small employers" = "#0f6481",
+      "9. Employers" = "#083342"
+  )) +
+  labs(
+    title = "Clases",
+    subtitle = "Porcentajes según sexo y tramo etario",
+    x = "Tramo de edad",
+    y = "Porcentaje",
+    fill = "Clases",
+    caption = paste0("Nota: Datos ponderados. N = ", n_unw)
+  ) +
+  theme_minimal()
+
+grafico
+
+ggsave("output/graph2/class2_sexo_edad.png", plot = grafico, width = 10, height = 6, dpi = 300)
+```
+
+### c05_02 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_02_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Una de las principales razones de la alta desigualdad en Chile \nes que los dueños de las empresas pagan poco a sus trabajadores",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c05_02 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_02_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Una de las principales razones de la alta desigualdad en Chile \nes que los dueños de las empresas pagan poco a sus trabajadores",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c05_03 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_03_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: El alto nivel de vida de los dueños de las empresas es resultado \nde lo poco que pagan a sus trabajadores",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c05_03 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c05_03_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: El alto nivel de vida de los dueños de las empresas es resultado \nde lo poco que pagan a sus trabajadores",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c06_02 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c06_02_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Apoyaría una reforma para crear un sistema solidario de reparto \nsi eso permite subir las pensiones",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c06_02 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c06_02_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Apoyaría una reforma para crear un sistema solidario de reparto \nsi eso permite subir las pensiones",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c07_01 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_01_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Aumentar los impuestos a los más ricos para financiar \nprogramas sociales",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c07_01 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_01_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Aumentar los impuestos a los más ricos para financiar \nprogramas sociales",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c07_03 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_03_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Implementar leyes para que los sindicatos tengan más poder \nde negociación",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c07_03 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_03_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Implementar leyes para que los sindicatos tengan más poder \nde negociación",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c07_04 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_04_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Redistribuir las riquezas desde quienes tienen más recursos \nhacia quienes tienen menos recursos",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c07_04 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_04_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Redistribuir las riquezas desde quienes tienen más recursos \nhacia quienes tienen menos recursos",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c07_05 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_05_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Promover la igualdad entre hombres y mujeres",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c07_05 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_05_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Promover la igualdad entre hombres y mujeres",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
+
+### c07_06 x clase
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_06_acuerdo,
+  x_var = wrightclass2_reduced,
+  title = "Acuerdo con: Garantizar la educación universitaria pública y gratuita",
+  subtitle = "Porcentaje según clase social",
+  x_label = "Clase social",
+  x_text_angle = 45,
+  single_fill = "#9e1b1e"
+)
+```
+
+### c07_06 x clase x sexo
+
+```{r}
+plot_binary_by(
+  data = data_svy,
+  var = c07_06_acuerdo,
+  x_var = wrightclass2_reduced,
+  fill_var = sexo,
+  title = "Acuerdo con: Garantizar la educación universitaria pública y gratuita",
+  subtitle = "Porcentaje según sexo y clase social",
+  x_label = "Clase social",
+  fill_label = "Sexo",
+  palette = c("Mujer"="#f25f5c","Hombre"="#9e1b1e"),
+  x_text_angle = 45
+)
+```
